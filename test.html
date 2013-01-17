@@ -4,17 +4,12 @@
     <title>
       CubicVR.js: Utilizing the CubicVR.Mesh build() procedure for construction
     </title>
-    <script src="../../CubicVR.js" type="text/javascript">
+    <script src="CubicVR.js" type="text/javascript">
     </script>
     <script type='text/javascript'>
       function buildMesh() {  
        return new CubicVR.Mesh({
-          material:{ 
-            textures: {
-              color: "../images/1422-diffuse.jpg",
-            },
-            //colorMap: true
-          },
+         
           points:[
             [-1, -1, 1],
             [1, -1, 1],
@@ -36,12 +31,6 @@
            [[0,1],[1,1],[1,0],[0,0]],
            [[0,1],[1,1],[1,0],[0,0]],
            [[0,1],[1,1],[1,0],[0,0]]
-          ],
-          color: [
-            [[1,0,0],[0,1,0],[0,0,1],[1,1,1]],
-            [[1,0,0],[0,1,0],[0,0,1],[1,1,1]],
-            [[1,0,0],[0,1,0],[0,0,1],[1,1,1]],
-            [[1,0,0],[0,1,0],[0,0,1],[1,1,1]]
           ],
          compile:true
        });
