@@ -8,34 +8,59 @@
     </script>
     <script type='text/javascript'>
       function buildMesh() {  
-       return new CubicVR.Mesh({          
-            points:[
-            [-0.25, -0.25, 0.4125],
-            [0.25, -0.25, 0.4125],
-            [0.25, 0.25, 0.4125],
-            [-0.25, 0.25, 0.4125],
-            [-0.5, 0.25, 0],
-            [-0.5, -0.25, 0],
-            [0.5, 0.25, 0],
-            [0.5, -0.25, -0],
-            [-0.25, -0.25, -0.4125],
-            [-0.25, 0.25, -0.4125],
-            [0.25, -0.25, -0.4125],
-            [0.25, 0.25, -0.4125]
+       var material1 = new CubicVR.Material({
+          textures: {
+            color: "1.jpg"
+          }
+        });
+
+       var mesh = new CubicVR.Mesh({  
+          points:[
+            [-0.2, -0.2, 0.5],
+            [0.2, -0.2, 0.5],
+            [0.2, 0.2, 0.5],
+            [-0.2, 0.2, 0.5],
+            [-0.5, 0.2, 0],
+            [-0.5, -0.2, 0],
+            [0.5, 0.2, 0],
+            [0.5, -0.2, -0],
+            [-0.2, -0.2, -0.5],
+            [-0.2, 0.2, -0.5],
+            [0.2, -0.2, -0.5],
+            [0.2, 0.2, -0.5],
+            [-0.5, 0.2, -0.25],
+            [-0.5, -0.2, -0.25],
+            [-0.5, 0.2, 0.25],
+            [-0.5, -0.2, 0.25],
+            [0.5, 0.2, -0.25],
+            [0.5, -0.2, -0.25],
+            [0.5, 0.2, 0.25],
+            [0.5, -0.2, 0.25]
+
           ],
           faces:[
             [0,1,2,3],
-            [0,3,4,5],
-            [2,1,7,6],
-            [5,4,9,8],
-            [6,7,10,11],
+            [13,12,9,8],
+            [2,1,19,18],
+            [18,19,17,16],
+            [16,17,10,11],
+            [0,3,14,15],
+            [15,14,12,13],
             [8,9,11,10],
-            [6,11,9,4],
-            [6,4,3,2],
-            [7,5,8,10],
-            [5,7,1,0]
+            [16,11,9,12],
+            [2,18,14,3],
+            [18,16,12,14],
+            [10,17,13,8],
+            [0,15,19,1],
+            [15,13,17,19]
+
           ],
           uv:[
+           [[0,1],[1,1],[1,0],[0,0]],
+           [[0,1],[1,1],[1,0],[0,0]],
+           [[0,1],[1,1],[1,0],[0,0]],
+           [[0,1],[1,1],[1,0],[0,0]],
+           [[0,1],[1,1],[1,0],[0,0]],
            [[0,1],[1,1],[1,0],[0,0]],
            [[0,1],[1,1],[1,0],[0,0]],
            [[0,1],[1,1],[1,0],[0,0]],
@@ -48,6 +73,9 @@
           ],
          compile:true
        });
+      mesh.setFaceMaterial(material1, 0);
+      mesh.prepare();
+      return mesh;
       }
       
       
@@ -104,12 +132,21 @@
            position: [-5,5,-10],
            distance: 50
         });
+        var light4 = new CubicVR.Light({
+           type: "point",
+           method: "dynamic",
+           diffuse: [1,1,1],
+           specular: [1,1,1],
+           position: [5,-5,-10],
+           distance: 50
+        });
+          
           var light5 = new CubicVR.Light({
            type: "point",
            method: "dynamic",
            diffuse: [1,1,1],
            specular: [1,1,1],
-           position: [0,0,10],
+           position: [5,5,10],
            distance: 50
         });
          var light6 = new CubicVR.Light({
@@ -117,16 +154,34 @@
            method: "dynamic",
            diffuse: [1,1,1],
            specular: [1,1,1],
-           position: [-5,0,10],
+           position: [-5,5,10],
+           distance: 50
+        });
+         var light7 = new CubicVR.Light({
+           type: "point",
+           method: "dynamic",
+           diffuse: [1,1,1],
+           specular: [1,1,1],
+           position: [-5,-5,10],
+           distance: 50
+        });
+         var light8 = new CubicVR.Light({
+           type: "point",
+           method: "dynamic",
+           diffuse: [1,1,1],
+           specular: [1,1,1],
+           position: [5,-5,10],
            distance: 50
         });
         
         scene.bindLight(light1);
-         scene.bindLight(light2);
-         scene.bindLight(light3);
-         scene.bindLight(light5);
+        scene.bindLight(light2);
+        scene.bindLight(light3);
+        scene.bindLight(light5);
         scene.bindLight(light6);
-        
+        scene.bindLight(light7);
+        scene.bindLight(light8);
+
         // initialize a mouse view controller
         var mvc = new CubicVR.MouseViewController(canvas, scene.camera);
         
