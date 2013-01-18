@@ -8,7 +8,13 @@
     </script>
     <script type='text/javascript'>
       function buildMesh() {  
-       return new CubicVR.Mesh({          
+       var material1 = new CubicVR.Material({
+          textures: {
+            color: "1.jpg"
+          }
+        });
+
+       var mesh = new CubicVR.Mesh({  
           points:[
             [-0.2, -0.2, 0.5],
             [0.2, -0.2, 0.5],
@@ -67,6 +73,9 @@
           ],
          compile:true
        });
+      mesh.setFaceMaterial(material1, 0);
+      mesh.prepare();
+      return mesh;
       }
       
       
