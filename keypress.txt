@@ -1,0 +1,41 @@
+var cameraPositions = new Array();
+		var currentCameraPosition = 0;
+		cameraPositions[0] = [0, 0, 5];
+		cameraPositions[1] = [0, 0, 5];
+		cameraPositions[2] = [0, 0, 5];
+		cameraPositions[3] = [0, 0, 5];
+		cameraPositions[4] = [0, 0, 5];
+		cameraPositions[5] = [0, 0, 5];
+		
+		document.onkeydown = checkKey;
+
+		function checkKey(e) {
+			e = e || window.event;
+
+			if(e.keyCode=='37')
+			{
+				scene.camera.position = cameraPositions[0];
+			}
+			else if(e.keyCode=='39')
+			{
+				scene.camera.position = cameraPositions[0];
+			}
+		 } 
+		
+		function moveCameraLeft(){
+			if(currentCameraPosition === 0){
+				currentCameraPosition = 5;
+			}else{
+				currentCameraPosition = currentCameraPosition - 1;
+			}
+				scene.camera.position = cameraPositions[currentCameraPosition];
+		};
+		
+		function moveCameraRight(){
+			if(currentCameraPosition === 5){
+				currentCameraPosition = 0;
+			}else{
+				currentCameraPosition = currentCameraPosition + 1;
+			}
+				scene.camera.position = cameraPositions[currentCameraPosition];
+		}
